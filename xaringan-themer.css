@@ -96,7 +96,6 @@ h1, h2, h3 {
 }
 .remark-code {
   font-size: var(--code-font-size);
-  text-align: left;
 }
 .remark-inline-code {
   font-size: var(--code-inline-font-size);

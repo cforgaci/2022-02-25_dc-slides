@@ -1,8 +1,8 @@
 ---
 title: "Day 4: R Markdown"
 subtitle: "Data Carpentries for Social Sciences"  
-institute: Leiden University & TU Delft
-date: '2021-07-08 *(Updated: `r Sys.Date()`)*'
+institute: Erasmus University Rotterdam, <br>Leiden University & TU Delft
+date: '2022-02-25'
 output:
   xaringan::moon_reader:
     css: xaringan-themer.css
@@ -24,13 +24,10 @@ knitr::opts_chunk$set(
   warning = FALSE,
   hiline = TRUE
 )
+
 library(tidyverse)
 library(here)
-interviews_plotting <- readr::read_csv(here("data", "interviews_plotting.csv"))
-percent_items <- interviews_plotting %>% 
-    group_by(village) %>%
-    summarize(across(bicycle:no_listed_items, ~ sum(.x) / n() * 100)) %>% 
-    pivot_longer(bicycle:no_listed_items, names_to = "items", values_to = "percent")
+interviews_plotting <- readr::read_csv(here("data", "interviews_plotting.csv"), na = "NULL")
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -54,27 +51,24 @@ class: center, middle
 
 ## Why R Markdown?
 
-R Markdown allows you to seamlessly combine executable R code, its output, and text in a single document. 
+R Markdown allows you to **seamlessly combine executable R code, its output, and text** in a single document. 
 
-These documents can be readily converted to multiple static and dynamic output formats, including PDF (.pdf), Word (.docx), and HTML (.html).
+These documents **can be converted to multiple static and dynamic output formats**, including PDF (.pdf), Word (.docx), and HTML (.html).
 
-The benefit of a well-prepared R Markdown document is full reproducibility. 
+The benefit of a well-prepared R Markdown document is **full reproducibility**. 
 
-<a href="https://github.com/allisonhorst/stats-illustrations">
-<img src="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/reproducibility_court.png" height=300 />
+<!-- <a href="https://github.com/allisonhorst/stats-illustrations"> -->
+<!-- <img src="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/reproducibility_court.png" height=300 /> -->
+<!-- </a> -->
+
+<a href="https://d33wubrfki0l68.cloudfront.net/ece57b678854545e6602a23daede51ad72da2170/21cca/lesson-images/outputs-1-word.png">
+<img src="https://d33wubrfki0l68.cloudfront.net/ece57b678854545e6602a23daede51ad72da2170/21cca/lesson-images/outputs-1-word.png" height=300 />
 </a>
 
----
-class: center, middle
 
-## Why R Markdown?
+???
 
-Full reproducibility also means that, if you notice a data transcription error, 
-or you are able to add more data to your analysis, you will be able to recompile
-the report without making any changes in the actual document.
-
-<img src="https://media.giphy.com/media/Vhk9HwPx3TO0w/giphy.gif" height=300 />
-
+Full reproducibility also means that, if you notice a data transcription error, or you are able to add more data to your analysis, you will be able to recompile the report without making any changes in the actual document.
 
 ---
 class: center, middle, inverse
@@ -82,9 +76,9 @@ class: center, middle, inverse
 ## R Markdown Exercises
 
 ---
-class: center, middle
+class: middle
 
-## Exercise 5
+## Exercise: Code chunk options
 
 `r emo::ji("clock")` **5 mins**
 
@@ -98,9 +92,10 @@ What is the difference between this and `include=FALSE`?
 `r countdown::countdown(minutes = 5, color_running_background  = "lightgreen", color_running_text = "black", color_finished_background = "red", color_finished_text =  "grey30")`
 
 ---
-class: center, middle, inverse
+class: center, middle
 
-## Exercise 5: Solution
+## Exercise: Code chunk options
+### Solution
 
 Create a chunk with `eval=FALSE, echo=FALSE`
 
@@ -113,44 +108,6 @@ knitted document...
 ...whereas `include=FALSE` will run the code and store the output for later use.
 
 ---
-class: center, middle
+class: center, middle, inverse
 
-## Exercise 6
-
-`r emo::ji("clock")` **10 mins**
-
-Create a new code chunk for the plot, and copy the code from any of the plots we
-created in the previous episode to produce a plot in the chunk,  
-and use your
-newly acquired customisation skills to make it look really nice!
-
-If you are feeling adventurous, you can also create a new plot with the
-`interviews_plotting` data frame.
-
-Feel free to post screenshots of your masterpiece in the [Google Doc](https://docs.google.com/document/d/1htdsH-Vx2ujGdehn0HW5ua00JHqwUprtqCbdBzLYr0o/edit#)
-
-`r countdown::countdown(minutes = 10, color_running_background  = "lightgreen", color_running_text = "black", color_finished_background = "red", color_finished_text =  "grey30")`
-
----
-class: middle, inverse
-
-## Exercise 6: Solution
-
-```{r exercise-6-setup, echo=FALSE}
-percent_wall_type <- interviews_plotting %>%
-    filter(respondent_wall_type != "cement") %>%
-    count(village, respondent_wall_type) %>%
-    group_by(village) %>%
-    mutate(percent = (n / sum(n)) * 100) %>%
-    ungroup()
-```
-
-
-```{r exercise-6-sol, fig.width=9, fig.height=3.5, fig.retina=3}
-percent_wall_type %>%
-    ggplot(aes(x = village, y = percent, fill = respondent_wall_type)) +
-    geom_bar(stat = "identity", position = "dodge") +
-    theme_classic() +
-    scale_fill_viridis_d() # add colourblind-friendly palette
-```
-
+## Keep knitting!

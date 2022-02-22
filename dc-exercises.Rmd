@@ -35,10 +35,10 @@ interviews_plotting <- readr::read_csv(here("data", "interviews_plotting.csv"), 
 #devtools::install_github("bbartholdy/xaringanthemer") 
 library(xaringanthemer)
 style_duo(
-  primary_color = "#1F4257",
-  secondary_color = "#F97B64",
-  text_bold_color = "#d4d640", 
-  code_inline_color = "#29e6a4"
+  primary_color = "#481567ff",
+  secondary_color = "#20a387ff",
+  text_bold_color = "#33638DFF", 
+  code_inline_color = "#fde725ff"
 )
 ```
 

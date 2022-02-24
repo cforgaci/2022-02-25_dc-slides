@@ -38,7 +38,7 @@ library(xaringanthemer)
 style_duo(
   primary_color = "#481567ff",
   secondary_color = "#20a387ff",
-  text_bold_color = "#33638DFF", 
+  text_bold_color = "#20a387ff", 
   code_inline_color = "#fde725ff"
 )
 ```
@@ -70,6 +70,19 @@ The benefit of a well-prepared R Markdown document is **full reproducibility**.
 ???
 
 Full reproducibility also means that, if you notice a data transcription error, or you are able to add more data to your analysis, you will be able to recompile the report without making any changes in the actual document.
+---
+
+background-color: "#fffffff"
+background-image: url("rmd.png")
+background-position: center
+background-size: contain
+
+---
+
+background-color: "#fffffff"
+background-image: url("rmd-annotated.png")
+background-position: center
+background-size: contain
 
 ---
 class: center, middle, inverse

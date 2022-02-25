@@ -90,6 +90,13 @@ class: center, middle, inverse
 ## R Markdown Exercises
 
 ---
+
+background-color: "#fffffff"
+background-image: url("code-chunk-options.png")
+background-position: center
+background-size: contain
+
+---
 class: middle
 
 ## Exercise: Code chunk options
